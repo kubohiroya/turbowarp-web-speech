@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TurboWarp Web Speech</title>
+  <style>
+    body { font: 16px/1.6 system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; color: #1f2328; background: #fff; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { background: #f6f8fa; padding: 1rem; overflow-x: auto; border-radius: 6px; }
+    @media (prefers-color-scheme: dark) { body { color: #e6edf3; background: #0d1117; } pre { background: #161b22; } a { color: #58a6ff; } }
+  </style>
+</head>
+<body>
+  <h1>TurboWarp Web Speech</h1>
+  <p>Speech recognition and speech synthesis in the browser for TurboWarp projects, with no API key.</p>
+
+  <h2>Install</h2>
+  <p>Load <a href="https://github.com/kubohiroya/turbowarp-web-speech/blob/main/dist/turbowarp-web-speech.js"><code>turbowarp-web-speech.js</code></a> as a custom extension with <strong>Run without sandbox</strong> enabled. Use Chrome, Edge, or Safari for speech recognition.</p>
+
+  <h2>Listen and answer</h2>
+  <pre>when green flag clicked
+set recognition language to [ja-JP]
+set speech language to [ja-JP]
+say (listen and wait)
+speak (join [you said ] (recognized text)) and wait</pre>
+
+  <h2>Let the user interrupt</h2>
+  <pre>when someone starts speaking
+stop speaking</pre>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li>Chrome and Edge normally send microphone audio to a cloud service for recognition. Tell users before you use it.</li>
+    <li>TurboWarp Desktop can speak, but usually cannot recognize speech.</li>
+    <li>Pressing the stop button releases the microphone and silences speech.</li>
+    <li>If something fails, check <code>last speech error</code>.</li>
+  </ul>
+
+  <p>Full block reference: <a href="https://github.com/kubohiroya/turbowarp-web-speech#block-reference">README</a>.</p>
+</body>
+</html>

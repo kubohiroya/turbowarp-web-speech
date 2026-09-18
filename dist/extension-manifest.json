@@ -1,0 +1,169 @@
+{
+  "formatVersion": 1,
+  "id": "kubohiroyawebspeech",
+  "blocks": [
+    {
+      "opcode": "interimText",
+      "blockType": "REPORTER",
+      "arguments": []
+    },
+    {
+      "opcode": "isListening",
+      "blockType": "BOOLEAN",
+      "arguments": []
+    },
+    {
+      "opcode": "isRecognitionSupported",
+      "blockType": "BOOLEAN",
+      "arguments": []
+    },
+    {
+      "opcode": "isSpeaking",
+      "blockType": "BOOLEAN",
+      "arguments": []
+    },
+    {
+      "opcode": "isSynthesisSupported",
+      "blockType": "BOOLEAN",
+      "arguments": []
+    },
+    {
+      "opcode": "lastError",
+      "blockType": "REPORTER",
+      "arguments": []
+    },
+    {
+      "opcode": "listenAndWait",
+      "blockType": "REPORTER",
+      "arguments": []
+    },
+    {
+      "opcode": "recognizedText",
+      "blockType": "REPORTER",
+      "arguments": []
+    },
+    {
+      "opcode": "setRecognitionLanguage",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "LANG",
+          "type": "STRING",
+          "menu": "languages"
+        }
+      ]
+    },
+    {
+      "opcode": "setSpeechLanguage",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "LANG",
+          "type": "STRING",
+          "menu": "languages"
+        }
+      ]
+    },
+    {
+      "opcode": "setSpeechPitch",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "PITCH",
+          "type": "NUMBER"
+        }
+      ]
+    },
+    {
+      "opcode": "setSpeechRate",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "RATE",
+          "type": "NUMBER"
+        }
+      ]
+    },
+    {
+      "opcode": "setSpeechVoice",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "VOICE",
+          "type": "STRING",
+          "menu": "voices"
+        }
+      ]
+    },
+    {
+      "opcode": "speak",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "TEXT",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "opcode": "speakAndWait",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "TEXT",
+          "type": "STRING"
+        }
+      ]
+    },
+    {
+      "opcode": "startListening",
+      "blockType": "COMMAND",
+      "arguments": [
+        {
+          "id": "MODE",
+          "type": "STRING",
+          "menu": "listenModes"
+        }
+      ]
+    },
+    {
+      "opcode": "stopListening",
+      "blockType": "COMMAND",
+      "arguments": []
+    },
+    {
+      "opcode": "stopSpeaking",
+      "blockType": "COMMAND",
+      "arguments": []
+    },
+    {
+      "opcode": "voicesJson",
+      "blockType": "REPORTER",
+      "arguments": []
+    },
+    {
+      "opcode": "whenSpeechRecognized",
+      "blockType": "HAT",
+      "arguments": []
+    },
+    {
+      "opcode": "whenSpeechStarts",
+      "blockType": "HAT",
+      "arguments": []
+    }
+  ],
+  "menus": [
+    {
+      "id": "languages",
+      "acceptReporters": true
+    },
+    {
+      "id": "listenModes",
+      "acceptReporters": false
+    },
+    {
+      "id": "voices",
+      "acceptReporters": true
+    }
+  ]
+}

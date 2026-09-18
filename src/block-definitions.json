@@ -1,0 +1,243 @@
+{
+  "extensionName": "Web Speech",
+  "blocks": [
+    {
+      "opcode": "isRecognitionSupported",
+      "blockType": "BOOLEAN",
+      "text": "speech recognition supported?",
+      "description": "Reports whether this browser offers speech recognition.",
+      "descriptionJa": "このブラウザで音声認識が使えるかを返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "setRecognitionLanguage",
+      "blockType": "COMMAND",
+      "text": "set recognition language to [LANG]",
+      "description": "Sets the language used from the next time listening starts.",
+      "descriptionJa": "次に聞き取りを始めるときから使う言語を設定します。",
+      "arguments": {
+        "LANG": {
+          "type": "STRING",
+          "defaultValue": "ja-JP",
+          "menu": "languages"
+        }
+      }
+    },
+    {
+      "opcode": "startListening",
+      "blockType": "COMMAND",
+      "text": "start listening [MODE]",
+      "description": "Starts listening. once stops after one utterance; continuous keeps listening until stop listening.",
+      "descriptionJa": "聞き取りを始めます。onceは1回話すと止まり、continuousはstop listeningまで聞き続けます。",
+      "arguments": {
+        "MODE": {
+          "type": "STRING",
+          "defaultValue": "once",
+          "menu": "listenModes"
+        }
+      }
+    },
+    {
+      "opcode": "stopListening",
+      "blockType": "COMMAND",
+      "text": "stop listening",
+      "description": "Stops listening and delivers any pending result.",
+      "descriptionJa": "聞き取りを止めます。認識途中の結果があれば確定させます。",
+      "arguments": {}
+    },
+    {
+      "opcode": "isListening",
+      "blockType": "BOOLEAN",
+      "text": "listening?",
+      "description": "Reports whether the microphone is being listened to.",
+      "descriptionJa": "聞き取り中かを返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "listenAndWait",
+      "blockType": "REPORTER",
+      "text": "listen and wait",
+      "description": "Listens for one utterance and reports its text, or empty text when nothing was recognized.",
+      "descriptionJa": "1回分の発話を聞き取り、その文字列を返します。認識できなければ空文字列を返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "whenSpeechRecognized",
+      "blockType": "HAT",
+      "text": "when speech is recognized",
+      "description": "Starts each time an utterance is recognized.",
+      "descriptionJa": "発話が認識されるたびに起動します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "whenSpeechStarts",
+      "blockType": "HAT",
+      "text": "when someone starts speaking",
+      "description": "Starts when the recognizer detects the start of speech. Useful for stopping speech output when the user interrupts.",
+      "descriptionJa": "話し始めを検出したときに起動します。利用者が割り込んだときに読み上げを止めるのに使えます。",
+      "arguments": {}
+    },
+    {
+      "opcode": "recognizedText",
+      "blockType": "REPORTER",
+      "text": "recognized text",
+      "description": "Reports the most recently recognized utterance.",
+      "descriptionJa": "直近に認識された発話を返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "interimText",
+      "blockType": "REPORTER",
+      "text": "interim recognized text",
+      "description": "Reports the text recognized so far for the utterance in progress.",
+      "descriptionJa": "話している途中の発話について、ここまでに認識された文字列を返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "isSynthesisSupported",
+      "blockType": "BOOLEAN",
+      "text": "speech synthesis supported?",
+      "description": "Reports whether this browser offers speech synthesis.",
+      "descriptionJa": "このブラウザで音声合成が使えるかを返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "speak",
+      "blockType": "COMMAND",
+      "text": "speak [TEXT]",
+      "description": "Starts speaking the text and continues the script immediately.",
+      "descriptionJa": "文字列の読み上げを始め、終わるのを待たずに次のブロックへ進みます。",
+      "arguments": {
+        "TEXT": {
+          "type": "STRING",
+          "defaultValue": "こんにちは"
+        }
+      }
+    },
+    {
+      "opcode": "speakAndWait",
+      "blockType": "COMMAND",
+      "text": "speak [TEXT] and wait",
+      "description": "Speaks the text and waits until it ends or is stopped.",
+      "descriptionJa": "文字列を読み上げ、終わるか止められるまで待ちます。",
+      "arguments": {
+        "TEXT": {
+          "type": "STRING",
+          "defaultValue": "こんにちは"
+        }
+      }
+    },
+    {
+      "opcode": "stopSpeaking",
+      "blockType": "COMMAND",
+      "text": "stop speaking",
+      "description": "Stops speech output, including queued text.",
+      "descriptionJa": "待ち行列にある分も含めて、読み上げを止めます。",
+      "arguments": {}
+    },
+    {
+      "opcode": "isSpeaking",
+      "blockType": "BOOLEAN",
+      "text": "speaking?",
+      "description": "Reports whether speech output is in progress.",
+      "descriptionJa": "読み上げ中かを返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "setSpeechLanguage",
+      "blockType": "COMMAND",
+      "text": "set speech language to [LANG]",
+      "description": "Sets the language of speech output.",
+      "descriptionJa": "読み上げの言語を設定します。",
+      "arguments": {
+        "LANG": {
+          "type": "STRING",
+          "defaultValue": "ja-JP",
+          "menu": "languages"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechVoice",
+      "blockType": "COMMAND",
+      "text": "set speech voice to [VOICE]",
+      "description": "Chooses a voice by name. Available voices depend on the browser and OS; empty uses the default voice for the language.",
+      "descriptionJa": "名前で声を選びます。使える声はブラウザとOSによって異なります。空にすると、その言語の既定の声を使います。",
+      "arguments": {
+        "VOICE": {
+          "type": "STRING",
+          "defaultValue": "",
+          "menu": "voices"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechRate",
+      "blockType": "COMMAND",
+      "text": "set speech rate to [RATE]",
+      "description": "Sets the speaking rate (0.1 to 10, normal 1).",
+      "descriptionJa": "読み上げの速さを設定します（0.1〜10、標準は1）。",
+      "arguments": {
+        "RATE": {
+          "type": "NUMBER",
+          "defaultValue": "1"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechPitch",
+      "blockType": "COMMAND",
+      "text": "set speech pitch to [PITCH]",
+      "description": "Sets the speaking pitch (0 to 2, normal 1).",
+      "descriptionJa": "読み上げの声の高さを設定します（0〜2、標準は1）。",
+      "arguments": {
+        "PITCH": {
+          "type": "NUMBER",
+          "defaultValue": "1"
+        }
+      }
+    },
+    {
+      "opcode": "voicesJson",
+      "blockType": "REPORTER",
+      "text": "available voices",
+      "description": "Reports the voices of this browser as JSON text.",
+      "descriptionJa": "このブラウザで使える声の一覧をJSONテキストで返します。",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastError",
+      "blockType": "REPORTER",
+      "text": "last speech error",
+      "description": "Reports the most recent recognition or synthesis error, or an empty string.",
+      "descriptionJa": "直近の音声認識または音声合成のエラーを返します。エラーがなければ空文字列を返します。",
+      "arguments": {}
+    }
+  ],
+  "menus": {
+    "languages": {
+      "acceptReporters": true,
+      "items": [
+        "ja-JP",
+        "en-US",
+        "en-GB",
+        "zh-CN",
+        "ko-KR",
+        "fr-FR",
+        "de-DE",
+        "es-ES"
+      ]
+    },
+    "listenModes": {
+      "acceptReporters": false,
+      "items": [
+        "once",
+        "continuous"
+      ]
+    },
+    "voices": {
+      "acceptReporters": true,
+      "items": "voiceMenu"
+    }
+  }
+}
