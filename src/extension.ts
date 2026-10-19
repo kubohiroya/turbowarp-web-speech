@@ -1,3 +1,4 @@
+import {registerFixedInputEditors} from './fixed-input-editors.js';
 import {extensionConfig} from './config';
 import definitions from './block-definitions.json';
 import {createWebSpeech, type ListenMode, type WebSpeech} from './composition.js';
@@ -44,10 +45,14 @@ type Args = Record<string, unknown>;
 
 /** Block surface over the Web Speech composition. */
 export class WebSpeechExtension implements TurboWarpExtension {
+  private readonly fixedEditorRuntime: unknown;
+  private fixedEditorsDispose: (() => void) | undefined;
+
   private lastErrorMessage = '';
   private readonly speech: WebSpeech;
 
   public constructor(deps: WebSpeechExtensionDependencies) {
+    this.fixedEditorRuntime = deps.runtime;
     this.speech = deps.speech ?? createWebSpeech();
     this.speech.subscribe((event) => {
       if (event.type === 'final') deps.runtime.startHats(RECOGNIZED_OPCODE);
@@ -62,7 +67,7 @@ export class WebSpeechExtension implements TurboWarpExtension {
   }
 
   public getInfo(): Record<string, unknown> {
-    return {
+    const info = {
       id: extensionConfig.id,
       name: Scratch.translate(definitions.extensionName),
       docsURI: extensionConfig.docsURI,
@@ -75,6 +80,8 @@ export class WebSpeechExtension implements TurboWarpExtension {
         ])
       )
     };
+    this.fixedEditorsDispose ??= registerFixedInputEditors(Scratch, this.fixedEditorRuntime, info.blocks);
+    return info;
   }
 
   /** Dynamic menu: the voices of this browser, with an empty entry for the default voice. */

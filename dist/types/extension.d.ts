@@ -13,6 +13,8 @@ export interface WebSpeechExtensionDependencies {
 type Args = Record<string, unknown>;
 /** Block surface over the Web Speech composition. */
 export declare class WebSpeechExtension implements TurboWarpExtension {
+    private readonly fixedEditorRuntime;
+    private fixedEditorsDispose;
     private lastErrorMessage;
     private readonly speech;
     constructor(deps: WebSpeechExtensionDependencies);

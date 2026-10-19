@@ -1,0 +1,206 @@
+{
+  "id": "kubohiroyawebspeech",
+  "name": "Web Speech",
+  "docsURI": "https://kubohiroya.github.io/turbowarp-web-speech/",
+  "blockIconURI": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHJlY3QgeD0iMTgiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIyMiIgcng9IjYiIGZpbGw9IiNFNjUzM0MiLz48cGF0aCBkPSJNMTIgMjJhMTIgMTIgMCAwIDAgMjQgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTY1MzNDIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0yNCAzNHY3TTE3IDQxaDE0IiBzdHJva2U9IiNFNjUzM0MiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTM4IDE0YzIgMi41IDIgNy41IDAgMTBNNDIgMTFjMy41IDQgMy41IDEyIDAgMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0YyOUMzOCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==",
+  "blocks": [
+    {
+      "opcode": "isRecognitionSupported",
+      "blockType": "Boolean",
+      "text": "speech recognition supported?",
+      "arguments": {}
+    },
+    {
+      "opcode": "setRecognitionLanguage",
+      "blockType": "command",
+      "text": "set recognition language to [LANG]",
+      "arguments": {
+        "LANG": {
+          "type": "string",
+          "defaultValue": "ja-JP",
+          "menu": "languages"
+        }
+      }
+    },
+    {
+      "opcode": "startListening",
+      "blockType": "command",
+      "text": "start listening [MODE]",
+      "arguments": {
+        "MODE": {
+          "type": "string",
+          "defaultValue": "once",
+          "menu": "listenModes"
+        }
+      }
+    },
+    {
+      "opcode": "stopListening",
+      "blockType": "command",
+      "text": "stop listening",
+      "arguments": {}
+    },
+    {
+      "opcode": "isListening",
+      "blockType": "Boolean",
+      "text": "listening?",
+      "arguments": {}
+    },
+    {
+      "opcode": "listenAndWait",
+      "blockType": "reporter",
+      "text": "listen and wait",
+      "arguments": {}
+    },
+    {
+      "opcode": "whenSpeechRecognized",
+      "blockType": "hat",
+      "text": "when speech is recognized",
+      "arguments": {},
+      "isEdgeActivated": false
+    },
+    {
+      "opcode": "whenSpeechStarts",
+      "blockType": "hat",
+      "text": "when someone starts speaking",
+      "arguments": {},
+      "isEdgeActivated": false
+    },
+    {
+      "opcode": "recognizedText",
+      "blockType": "reporter",
+      "text": "recognized text",
+      "arguments": {}
+    },
+    {
+      "opcode": "interimText",
+      "blockType": "reporter",
+      "text": "interim recognized text",
+      "arguments": {}
+    },
+    {
+      "opcode": "isSynthesisSupported",
+      "blockType": "Boolean",
+      "text": "speech synthesis supported?",
+      "arguments": {}
+    },
+    {
+      "opcode": "speak",
+      "blockType": "command",
+      "text": "speak [TEXT]",
+      "arguments": {
+        "TEXT": {
+          "type": "string",
+          "defaultValue": "こんにちは"
+        }
+      }
+    },
+    {
+      "opcode": "speakAndWait",
+      "blockType": "command",
+      "text": "speak [TEXT] and wait",
+      "arguments": {
+        "TEXT": {
+          "type": "string",
+          "defaultValue": "こんにちは"
+        }
+      }
+    },
+    {
+      "opcode": "stopSpeaking",
+      "blockType": "command",
+      "text": "stop speaking",
+      "arguments": {}
+    },
+    {
+      "opcode": "isSpeaking",
+      "blockType": "Boolean",
+      "text": "speaking?",
+      "arguments": {}
+    },
+    {
+      "opcode": "setSpeechLanguage",
+      "blockType": "command",
+      "text": "set speech language to [LANG]",
+      "arguments": {
+        "LANG": {
+          "type": "string",
+          "defaultValue": "ja-JP",
+          "menu": "languages"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechVoice",
+      "blockType": "command",
+      "text": "set speech voice to [VOICE]",
+      "arguments": {
+        "VOICE": {
+          "type": "string",
+          "defaultValue": "",
+          "menu": "voices"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechRate",
+      "blockType": "command",
+      "text": "set speech rate to [RATE]",
+      "arguments": {
+        "RATE": {
+          "type": "number",
+          "defaultValue": "1"
+        }
+      }
+    },
+    {
+      "opcode": "setSpeechPitch",
+      "blockType": "command",
+      "text": "set speech pitch to [PITCH]",
+      "arguments": {
+        "PITCH": {
+          "type": "number",
+          "defaultValue": "1"
+        }
+      }
+    },
+    {
+      "opcode": "voicesJson",
+      "blockType": "reporter",
+      "text": "available voices",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastError",
+      "blockType": "reporter",
+      "text": "last speech error",
+      "arguments": {}
+    }
+  ],
+  "menus": {
+    "languages": {
+      "acceptReporters": true,
+      "items": [
+        "ja-JP",
+        "en-US",
+        "en-GB",
+        "zh-CN",
+        "ko-KR",
+        "fr-FR",
+        "de-DE",
+        "es-ES"
+      ]
+    },
+    "listenModes": {
+      "acceptReporters": false,
+      "items": [
+        "once",
+        "continuous"
+      ]
+    },
+    "voices": {
+      "acceptReporters": true,
+      "items": "voiceMenu"
+    }
+  }
+}

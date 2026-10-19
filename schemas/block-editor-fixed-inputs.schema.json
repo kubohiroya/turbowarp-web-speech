@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://kubohiroya.github.io/turbowarp-web-speech/schemas/block-editor-fixed-inputs.schema.json",
+  "title": "turbowarp-web-speech fixed editing contracts",
+  "$defs": {
+    "startListening": {
+      "type": "object",
+      "properties": {
+        "MODE": {
+          "type": "string",
+          "enum": ["once", "continuous"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "setSpeechRate": {
+      "type": "object",
+      "properties": {
+        "RATE": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "setSpeechPitch": {
+      "type": "object",
+      "properties": {
+        "PITCH": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
