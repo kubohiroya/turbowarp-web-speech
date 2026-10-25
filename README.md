@@ -1,5 +1,7 @@
 # TurboWarp-Web-Speech
 
+<img src="assets/block-icon.svg" alt="" width="48" height="48">
+
 [English](README.md) | [日本語](README.ja.md)
 
 A TurboWarp extension for speech recognition and speech synthesis in the browser, using the Web Speech API. It needs no API key and no server of its own.

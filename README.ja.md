@@ -1,5 +1,7 @@
 # TurboWarp-Web-Speech
 
+<img src="assets/block-icon.svg" alt="" width="48" height="48">
+
 [English](README.md) | [日本語](README.ja.md)
 
 Web Speech APIを使い、ブラウザの中で音声認識と音声合成を行うTurboWarp機能拡張です。APIキーも、この拡張専用のサーバも不要です。
