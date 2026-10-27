@@ -8,6 +8,14 @@ A TurboWarp extension for speech recognition and speech synthesis in the browser
 
 **User guide:** [English](https://kubohiroya.github.io/turbowarp-web-speech/)
 
+## Minimal demo
+
+[Open in TurboWarp Editor](https://turbowarp.org/editor?project_url=https%3A%2F%2Fkubohiroya.github.io%2Fturbowarp-web-speech%2Fsamples%2Fspeak-one-sentence.sb3) · [Download SB3](https://kubohiroya.github.io/turbowarp-web-speech/samples/speak-one-sentence.sb3)
+
+Allow the extension, click the green flag, then click the blue Speak sprite. speakAndWait speaks Hello, TurboWarp! once. Finished with an empty Speech error means synthesis completed. Stop cancels output and its queue; click again to speak. No speech recognition or microphone is used. Browser/OS speech synthesis and an audible output volume are required. If supported is false or an error appears, check browser and OS voice settings. An empty voices list may still work with a default voice. Available voices and audible sound depend on the OS and output settings.
+
+See [samples/README.md](samples/README.md) for editable sources and regeneration.
+
 ## What it does
 
 - Listens to the microphone and reports recognized text, once or continuously.

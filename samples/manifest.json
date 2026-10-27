@@ -1,0 +1,15 @@
+{
+  "baseURL": "https://kubohiroya.github.io/turbowarp-web-speech/",
+  "extension": {
+    "id": "kubohiroyawebspeech",
+    "bundle": "dist/turbowarp-web-speech.js",
+    "unsandboxed": true
+  },
+  "samples": [
+    {
+      "name": "speak-one-sentence",
+      "title": "Web Speech minimal demo",
+      "instructions": "Click the blue button to speak Hello, TurboWarp! once."
+    }
+  ]
+}
