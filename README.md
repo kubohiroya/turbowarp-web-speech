@@ -39,7 +39,7 @@ A TurboWarp extension for speech recognition and speech synthesis in the browser
 ### npm package
 
 ```bash
-pnpm add --save-exact @kubohiroya/turbowarp-web-speech@0.2.0
+pnpm add --save-exact @kubohiroya/turbowarp-web-speech@0.3.0
 ```
 
 Standalone bundle:
