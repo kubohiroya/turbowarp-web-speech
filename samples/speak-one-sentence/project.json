@@ -12,6 +12,14 @@
           "Synthesis supported",
           ""
         ],
+        "sample-voice-name": [
+          "Voice name",
+          ""
+        ],
+        "sample-voice-valid": [
+          "Japanese voice found",
+          ""
+        ],
         "sample-speech-status": [
           "Speech status",
           ""
@@ -40,9 +48,18 @@
           "y": 35
         },
         "b2": {
-          "opcode": "data_setvariableto",
+          "opcode": "kubohiroyawebspeech_stopSpeaking",
           "parent": "b1",
           "next": "b3",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b3": {
+          "opcode": "data_setvariableto",
+          "parent": "b2",
+          "next": "b4",
           "inputs": {
             "VALUE": [
               1,
@@ -61,23 +78,109 @@
           "shadow": false,
           "topLevel": false
         },
-        "b3": {
-          "opcode": "kubohiroyawebspeech_stopSpeaking",
-          "parent": "b2",
-          "next": "b4",
-          "inputs": {},
+        "b4": {
+          "opcode": "kubohiroyawebspeech_setSpeechLanguage",
+          "parent": "b3",
+          "next": "b6",
+          "inputs": {
+            "LANG": [
+              1,
+              "b5"
+            ]
+          },
           "fields": {},
           "shadow": false,
           "topLevel": false
         },
-        "b4": {
+        "b5": {
+          "opcode": "kubohiroyawebspeech_menu_languages",
+          "parent": "b4",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "languages": [
+              "ja-JP",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        },
+        "b6": {
+          "opcode": "kubohiroyawebspeech_setSpeechRate",
+          "parent": "b4",
+          "next": "b7",
+          "inputs": {
+            "RATE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b7": {
+          "opcode": "kubohiroyawebspeech_setSpeechPitch",
+          "parent": "b6",
+          "next": "b8",
+          "inputs": {
+            "PITCH": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b8": {
           "opcode": "data_setvariableto",
-          "parent": "b3",
-          "next": "b6",
+          "parent": "b7",
+          "next": "b10",
+          "inputs": {
+            "VALUE": [
+              1,
+              "b9"
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b9": {
+          "opcode": "kubohiroyawebspeech_menu_voices",
+          "parent": "b8",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "voices": [
+              "Kyoko",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        },
+        "b10": {
+          "opcode": "data_setvariableto",
+          "parent": "b8",
+          "next": "b12",
           "inputs": {
             "VALUE": [
               3,
-              "b5",
+              "b11",
               [
                 10,
                 ""
@@ -93,23 +196,23 @@
           "shadow": false,
           "topLevel": false
         },
-        "b5": {
+        "b11": {
           "opcode": "kubohiroyawebspeech_isSynthesisSupported",
-          "parent": "b4",
+          "parent": "b10",
           "next": null,
           "inputs": {},
           "fields": {},
           "shadow": false,
           "topLevel": false
         },
-        "b6": {
+        "b12": {
           "opcode": "data_setvariableto",
-          "parent": "b4",
-          "next": "b8",
+          "parent": "b10",
+          "next": "b14",
           "inputs": {
             "VALUE": [
               3,
-              "b7",
+              "b13",
               [
                 10,
                 ""
@@ -125,19 +228,229 @@
           "shadow": false,
           "topLevel": false
         },
-        "b7": {
+        "b13": {
           "opcode": "kubohiroyawebspeech_voicesJson",
-          "parent": "b6",
+          "parent": "b12",
           "next": null,
           "inputs": {},
           "fields": {},
           "shadow": false,
           "topLevel": false
         },
-        "b8": {
+        "b14": {
           "opcode": "data_setvariableto",
-          "parent": "b6",
-          "next": "b9",
+          "parent": "b12",
+          "next": "b24",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b15",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Japanese voice found",
+              "sample-voice-valid"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b15": {
+          "opcode": "operator_and",
+          "parent": "b14",
+          "next": null,
+          "inputs": {
+            "OPERAND1": [
+              3,
+              "b16",
+              [
+                10,
+                ""
+              ]
+            ],
+            "OPERAND2": [
+              3,
+              "b19",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b16": {
+          "opcode": "operator_not",
+          "parent": "b15",
+          "next": null,
+          "inputs": {
+            "OPERAND": [
+              3,
+              "b17",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b17": {
+          "opcode": "operator_equals",
+          "parent": "b16",
+          "next": null,
+          "inputs": {
+            "OPERAND1": [
+              3,
+              "b18",
+              [
+                10,
+                ""
+              ]
+            ],
+            "OPERAND2": [
+              1,
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b18": {
+          "opcode": "data_variable",
+          "parent": "b17",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b19": {
+          "opcode": "operator_contains",
+          "parent": "b15",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              3,
+              "b20",
+              [
+                10,
+                ""
+              ]
+            ],
+            "STRING2": [
+              3,
+              "b21",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b20": {
+          "opcode": "data_variable",
+          "parent": "b19",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Available voices JSON",
+              "sample-voices"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b21": {
+          "opcode": "operator_join",
+          "parent": "b19",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              1,
+              [
+                10,
+                "\"name\":\""
+              ]
+            ],
+            "STRING2": [
+              3,
+              "b22",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b22": {
+          "opcode": "operator_join",
+          "parent": "b21",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              3,
+              "b23",
+              [
+                10,
+                ""
+              ]
+            ],
+            "STRING2": [
+              1,
+              [
+                10,
+                "\",\"lang\":\"ja"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b23": {
+          "opcode": "data_variable",
+          "parent": "b22",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b24": {
+          "opcode": "data_setvariableto",
+          "parent": "b14",
+          "next": "b25",
           "inputs": {
             "VALUE": [
               1,
@@ -156,16 +469,16 @@
           "shadow": false,
           "topLevel": false
         },
-        "b9": {
+        "b25": {
           "opcode": "data_setvariableto",
-          "parent": "b8",
-          "next": "b10",
+          "parent": "b24",
+          "next": "b26",
           "inputs": {
             "VALUE": [
               1,
               [
                 10,
-                "Click the blue speech button"
+                "Select a Japanese voice, then click Speak"
               ]
             ]
           },
@@ -178,9 +491,9 @@
           "shadow": false,
           "topLevel": false
         },
-        "b10": {
+        "b26": {
           "opcode": "data_setvariableto",
-          "parent": "b9",
+          "parent": "b25",
           "next": null,
           "inputs": {
             "VALUE": [
@@ -229,10 +542,10 @@
       "lists": {},
       "broadcasts": {},
       "blocks": {
-        "b11": {
+        "b27": {
           "opcode": "event_whenthisspriteclicked",
           "parent": null,
-          "next": "b12",
+          "next": "b28",
           "inputs": {},
           "fields": {},
           "shadow": false,
@@ -240,22 +553,23 @@
           "x": 35,
           "y": 35
         },
-        "b12": {
+        "b28": {
           "opcode": "kubohiroyawebspeech_stopSpeaking",
-          "parent": "b11",
-          "next": "b13",
+          "parent": "b27",
+          "next": "b29",
           "inputs": {},
           "fields": {},
           "shadow": false,
           "topLevel": false
         },
-        "b13": {
+        "b29": {
           "opcode": "data_setvariableto",
-          "parent": "b12",
-          "next": "b14",
+          "parent": "b28",
+          "next": "b31",
           "inputs": {
             "VALUE": [
-              1,
+              3,
+              "b30",
               [
                 10,
                 ""
@@ -264,23 +578,416 @@
           },
           "fields": {
             "VARIABLE": [
-              "Speech error",
-              "sample-speech-error"
+              "Available voices JSON",
+              "sample-voices"
             ]
           },
           "shadow": false,
           "topLevel": false
         },
-        "b14": {
+        "b30": {
+          "opcode": "kubohiroyawebspeech_voicesJson",
+          "parent": "b29",
+          "next": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b31": {
           "opcode": "data_setvariableto",
-          "parent": "b13",
-          "next": "b15",
+          "parent": "b29",
+          "next": "b41",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b32",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Japanese voice found",
+              "sample-voice-valid"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b32": {
+          "opcode": "operator_and",
+          "parent": "b31",
+          "next": null,
+          "inputs": {
+            "OPERAND1": [
+              3,
+              "b33",
+              [
+                10,
+                ""
+              ]
+            ],
+            "OPERAND2": [
+              3,
+              "b36",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b33": {
+          "opcode": "operator_not",
+          "parent": "b32",
+          "next": null,
+          "inputs": {
+            "OPERAND": [
+              3,
+              "b34",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b34": {
+          "opcode": "operator_equals",
+          "parent": "b33",
+          "next": null,
+          "inputs": {
+            "OPERAND1": [
+              3,
+              "b35",
+              [
+                10,
+                ""
+              ]
+            ],
+            "OPERAND2": [
+              1,
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b35": {
+          "opcode": "data_variable",
+          "parent": "b34",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b36": {
+          "opcode": "operator_contains",
+          "parent": "b32",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              3,
+              "b37",
+              [
+                10,
+                ""
+              ]
+            ],
+            "STRING2": [
+              3,
+              "b38",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b37": {
+          "opcode": "data_variable",
+          "parent": "b36",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Available voices JSON",
+              "sample-voices"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b38": {
+          "opcode": "operator_join",
+          "parent": "b36",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              1,
+              [
+                10,
+                "\"name\":\""
+              ]
+            ],
+            "STRING2": [
+              3,
+              "b39",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b39": {
+          "opcode": "operator_join",
+          "parent": "b38",
+          "next": null,
+          "inputs": {
+            "STRING1": [
+              3,
+              "b40",
+              [
+                10,
+                ""
+              ]
+            ],
+            "STRING2": [
+              1,
+              [
+                10,
+                "\",\"lang\":\"ja"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b40": {
+          "opcode": "data_variable",
+          "parent": "b39",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b41": {
+          "opcode": "control_if_else",
+          "parent": "b31",
+          "next": null,
+          "inputs": {
+            "CONDITION": [
+              3,
+              "b42",
+              [
+                10,
+                ""
+              ]
+            ],
+            "SUBSTACK": [
+              2,
+              "b45"
+            ],
+            "SUBSTACK2": [
+              2,
+              "b57"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b42": {
+          "opcode": "operator_and",
+          "parent": "b41",
+          "next": null,
+          "inputs": {
+            "OPERAND1": [
+              3,
+              "b43",
+              [
+                10,
+                ""
+              ]
+            ],
+            "OPERAND2": [
+              3,
+              "b44",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b43": {
+          "opcode": "data_variable",
+          "parent": "b42",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Synthesis supported",
+              "sample-supported"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b44": {
+          "opcode": "data_variable",
+          "parent": "b42",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Japanese voice found",
+              "sample-voice-valid"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b45": {
+          "opcode": "kubohiroyawebspeech_setSpeechVoice",
+          "parent": "b41",
+          "next": "b47",
+          "inputs": {
+            "VOICE": [
+              3,
+              "b46",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b46": {
+          "opcode": "data_variable",
+          "parent": "b45",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Voice name",
+              "sample-voice-name"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b47": {
+          "opcode": "kubohiroyawebspeech_setSpeechLanguage",
+          "parent": "b45",
+          "next": "b49",
+          "inputs": {
+            "LANG": [
+              1,
+              "b48"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b48": {
+          "opcode": "kubohiroyawebspeech_menu_languages",
+          "parent": "b47",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "languages": [
+              "ja-JP",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        },
+        "b49": {
+          "opcode": "kubohiroyawebspeech_setSpeechRate",
+          "parent": "b47",
+          "next": "b50",
+          "inputs": {
+            "RATE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b50": {
+          "opcode": "kubohiroyawebspeech_setSpeechPitch",
+          "parent": "b49",
+          "next": "b51",
+          "inputs": {
+            "PITCH": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b51": {
+          "opcode": "data_setvariableto",
+          "parent": "b50",
+          "next": "b52",
           "inputs": {
             "VALUE": [
               1,
               [
                 10,
-                "Speaking..."
+                "Speaking with selected voice"
               ]
             ]
           },
@@ -293,59 +1000,13 @@
           "shadow": false,
           "topLevel": false
         },
-        "b15": {
-          "opcode": "kubohiroyawebspeech_setSpeechLanguage",
-          "parent": "b14",
-          "next": "b17",
-          "inputs": {
-            "LANG": [
-              1,
-              "b16"
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "b16": {
-          "opcode": "kubohiroyawebspeech_menu_languages",
-          "parent": "b15",
-          "next": null,
-          "inputs": {},
-          "fields": {
-            "languages": [
-              "en-US",
-              null
-            ]
-          },
-          "shadow": true,
-          "topLevel": false
-        },
-        "b17": {
-          "opcode": "kubohiroyawebspeech_speakAndWait",
-          "parent": "b15",
-          "next": "b18",
-          "inputs": {
-            "TEXT": [
-              1,
-              [
-                10,
-                "Hello, TurboWarp!"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "b18": {
+        "b52": {
           "opcode": "data_setvariableto",
-          "parent": "b17",
-          "next": "b20",
+          "parent": "b51",
+          "next": "b53",
           "inputs": {
             "VALUE": [
-              3,
-              "b19",
+              1,
               [
                 10,
                 ""
@@ -361,18 +1022,58 @@
           "shadow": false,
           "topLevel": false
         },
-        "b19": {
+        "b53": {
+          "opcode": "kubohiroyawebspeech_speakAndWait",
+          "parent": "b52",
+          "next": "b54",
+          "inputs": {
+            "TEXT": [
+              1,
+              [
+                10,
+                "こんにちは。音声合成のサンプルです。"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b54": {
+          "opcode": "data_setvariableto",
+          "parent": "b53",
+          "next": "b56",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b55",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech error",
+              "sample-speech-error"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b55": {
           "opcode": "kubohiroyawebspeech_lastError",
-          "parent": "b18",
+          "parent": "b54",
           "next": null,
           "inputs": {},
           "fields": {},
           "shadow": false,
           "topLevel": false
         },
-        "b20": {
+        "b56": {
           "opcode": "data_setvariableto",
-          "parent": "b18",
+          "parent": "b54",
           "next": null,
           "inputs": {
             "VALUE": [
@@ -380,6 +1081,28 @@
               [
                 10,
                 "Finished: see error if present"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech status",
+              "sample-speech-status"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b57": {
+          "opcode": "data_setvariableto",
+          "parent": "b41",
+          "next": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Choose an available Japanese voice first"
               ]
             ]
           },
@@ -402,16 +1125,16 @@
           "bitmapResolution": 1,
           "md5ext": "sprite.svg",
           "dataFormat": "svg",
-          "rotationCenterX": 110,
-          "rotationCenterY": 30
+          "rotationCenterX": 85,
+          "rotationCenterY": 25
         }
       ],
       "sounds": [],
       "volume": 100,
       "layerOrder": 1,
       "visible": true,
-      "x": 0,
-      "y": -45,
+      "x": 95,
+      "y": -85,
       "size": 100,
       "direction": 90,
       "draggable": false,
@@ -431,7 +1154,43 @@
       "width": 0,
       "height": 0,
       "x": 18,
-      "y": 115,
+      "y": 125,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "sample-voice-name",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Voice name"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 153,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "sample-voice-valid",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Japanese voice found"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 181,
       "visible": true,
       "sliderMin": 0,
       "sliderMax": 100,
@@ -449,7 +1208,7 @@
       "width": 0,
       "height": 0,
       "x": 18,
-      "y": 148,
+      "y": 209,
       "visible": true,
       "sliderMin": 0,
       "sliderMax": 100,
@@ -467,7 +1226,7 @@
       "width": 0,
       "height": 0,
       "x": 18,
-      "y": 181,
+      "y": 237,
       "visible": true,
       "sliderMin": 0,
       "sliderMax": 100,

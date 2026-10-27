@@ -12,7 +12,7 @@ Web Speech APIを使い、ブラウザの中で音声認識と音声合成を行
 
 [TurboWarp Editorで開く](https://turbowarp.org/editor?project_url=https%3A%2F%2Fkubohiroya.github.io%2Fturbowarp-web-speech%2Fsamples%2Fspeak-one-sentence.sb3) · [SB3ダウンロード](https://kubohiroya.github.io/turbowarp-web-speech/samples/speak-one-sentence.sb3)
 
-拡張を許可して緑の旗を押し、青い「Speak」スプライトをクリックすると、speakAndWaitで「Hello, TurboWarp!」を1回読み上げます。Speech statusがFinishedになり、Speech errorが空なら合成完了です。停止ボタンで読み上げと待ち行列を取り消し、再クリックで発話できます。音声認識・マイクは使いません。ブラウザ/OSの音声合成と出力音量が必要です。supported=falseやエラーが出る環境ではブラウザ/OSの音声設定を確認してください。voices一覧が空でも既定音声で動作する環境があります。利用できる声や実際に聞こえる音はOS・出力設定に依存します。
+初期選択は日本語音声のKyokoです。Kyokoが利用できない環境では発話しません。ステージのコードにある「Voice name を（音声メニュー）にする」のドロップダウンで、一覧に表示された日本語（ja / ja-JP）の声を選び、緑の旗で設定を反映します。「Japanese voice found」がtrueになったら、聞きたいときに青いSpeakスプライトをクリックします。setSpeechVoiceで指定した声を使い、日本語・速度1・高さ1で短文を読み上げます。未選択・声の一覧が空・選んだ日本語音声が現在の一覧にない場合は発話しません。緑の旗だけでは発話しません。停止ボタンで出力と待ち行列を取り消します。音声認識やマイクは使いません。音声はブラウザ/OSの導入状況で異なり、一覧が空ならOSの日本語音声設定を確認してページを再読込してください。声質・聞こえ方は利用者の環境で確認してください。
 
 編集元と再生成方法は[samples/README.md](samples/README.md)を参照。
 
