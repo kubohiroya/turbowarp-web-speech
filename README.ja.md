@@ -8,6 +8,14 @@ Web Speech APIを使い、ブラウザの中で音声認識と音声合成を行
 
 **利用ガイド:** [English](https://kubohiroya.github.io/turbowarp-web-speech/)
 
+## 最小デモ
+
+[TurboWarp Editorで開く](https://turbowarp.org/editor?project_url=https%3A%2F%2Fkubohiroya.github.io%2Fturbowarp-web-speech%2Fsamples%2Fspeak-one-sentence.sb3) · [SB3ダウンロード](https://kubohiroya.github.io/turbowarp-web-speech/samples/speak-one-sentence.sb3)
+
+拡張を許可して緑の旗を押し、青い「Speak」スプライトをクリックすると、speakAndWaitで「Hello, TurboWarp!」を1回読み上げます。Speech statusがFinishedになり、Speech errorが空なら合成完了です。停止ボタンで読み上げと待ち行列を取り消し、再クリックで発話できます。音声認識・マイクは使いません。ブラウザ/OSの音声合成と出力音量が必要です。supported=falseやエラーが出る環境ではブラウザ/OSの音声設定を確認してください。voices一覧が空でも既定音声で動作する環境があります。利用できる声や実際に聞こえる音はOS・出力設定に依存します。
+
+編集元と再生成方法は[samples/README.md](samples/README.md)を参照。
+
 ## できること
 
 - マイクの音声を聞き取り、認識した文字列を返す（1回だけ、または連続）

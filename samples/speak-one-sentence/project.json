@@ -1,0 +1,483 @@
+{
+  "targets": [
+    {
+      "isStage": true,
+      "name": "Stage",
+      "variables": {
+        "sample-state": [
+          "Sample state",
+          ""
+        ],
+        "sample-supported": [
+          "Synthesis supported",
+          ""
+        ],
+        "sample-speech-status": [
+          "Speech status",
+          ""
+        ],
+        "sample-speech-error": [
+          "Speech error",
+          ""
+        ],
+        "sample-voices": [
+          "Available voices JSON",
+          ""
+        ]
+      },
+      "lists": {},
+      "broadcasts": {},
+      "blocks": {
+        "b1": {
+          "opcode": "event_whenflagclicked",
+          "parent": null,
+          "next": "b2",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 35,
+          "y": 35
+        },
+        "b2": {
+          "opcode": "data_setvariableto",
+          "parent": "b1",
+          "next": "b3",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Running"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Sample state",
+              "sample-state"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b3": {
+          "opcode": "kubohiroyawebspeech_stopSpeaking",
+          "parent": "b2",
+          "next": "b4",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b4": {
+          "opcode": "data_setvariableto",
+          "parent": "b3",
+          "next": "b6",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b5",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Synthesis supported",
+              "sample-supported"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b5": {
+          "opcode": "kubohiroyawebspeech_isSynthesisSupported",
+          "parent": "b4",
+          "next": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b6": {
+          "opcode": "data_setvariableto",
+          "parent": "b4",
+          "next": "b8",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b7",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Available voices JSON",
+              "sample-voices"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b7": {
+          "opcode": "kubohiroyawebspeech_voicesJson",
+          "parent": "b6",
+          "next": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b8": {
+          "opcode": "data_setvariableto",
+          "parent": "b6",
+          "next": "b9",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech error",
+              "sample-speech-error"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b9": {
+          "opcode": "data_setvariableto",
+          "parent": "b8",
+          "next": "b10",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Click the blue speech button"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech status",
+              "sample-speech-status"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b10": {
+          "opcode": "data_setvariableto",
+          "parent": "b9",
+          "next": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Ready"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Sample state",
+              "sample-state"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        }
+      },
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [
+        {
+          "assetId": "",
+          "name": "Instructions",
+          "bitmapResolution": 1,
+          "md5ext": "backdrop.svg",
+          "dataFormat": "svg",
+          "rotationCenterX": 240,
+          "rotationCenterY": 180
+        }
+      ],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 0,
+      "tempo": 60,
+      "videoTransparency": 50,
+      "videoState": "off",
+      "textToSpeechLanguage": null
+    },
+    {
+      "isStage": false,
+      "name": "Speak",
+      "variables": {},
+      "lists": {},
+      "broadcasts": {},
+      "blocks": {
+        "b11": {
+          "opcode": "event_whenthisspriteclicked",
+          "parent": null,
+          "next": "b12",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 35,
+          "y": 35
+        },
+        "b12": {
+          "opcode": "kubohiroyawebspeech_stopSpeaking",
+          "parent": "b11",
+          "next": "b13",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b13": {
+          "opcode": "data_setvariableto",
+          "parent": "b12",
+          "next": "b14",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech error",
+              "sample-speech-error"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b14": {
+          "opcode": "data_setvariableto",
+          "parent": "b13",
+          "next": "b15",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Speaking..."
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech status",
+              "sample-speech-status"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b15": {
+          "opcode": "kubohiroyawebspeech_setSpeechLanguage",
+          "parent": "b14",
+          "next": "b17",
+          "inputs": {
+            "LANG": [
+              1,
+              "b16"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b16": {
+          "opcode": "kubohiroyawebspeech_menu_languages",
+          "parent": "b15",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "languages": [
+              "en-US",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        },
+        "b17": {
+          "opcode": "kubohiroyawebspeech_speakAndWait",
+          "parent": "b15",
+          "next": "b18",
+          "inputs": {
+            "TEXT": [
+              1,
+              [
+                10,
+                "Hello, TurboWarp!"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b18": {
+          "opcode": "data_setvariableto",
+          "parent": "b17",
+          "next": "b20",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b19",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech error",
+              "sample-speech-error"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b19": {
+          "opcode": "kubohiroyawebspeech_lastError",
+          "parent": "b18",
+          "next": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b20": {
+          "opcode": "data_setvariableto",
+          "parent": "b18",
+          "next": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Finished: see error if present"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Speech status",
+              "sample-speech-status"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        }
+      },
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [
+        {
+          "assetId": "",
+          "name": "Demo",
+          "bitmapResolution": 1,
+          "md5ext": "sprite.svg",
+          "dataFormat": "svg",
+          "rotationCenterX": 110,
+          "rotationCenterY": 30
+        }
+      ],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 1,
+      "visible": true,
+      "x": 0,
+      "y": -45,
+      "size": 100,
+      "direction": 90,
+      "draggable": false,
+      "rotationStyle": "all around"
+    }
+  ],
+  "monitors": [
+    {
+      "id": "sample-supported",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Synthesis supported"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 115,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "sample-speech-status",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Speech status"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 148,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "sample-speech-error",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Speech error"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 181,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    }
+  ],
+  "extensions": [],
+  "meta": {
+    "semver": "3.0.0",
+    "vm": "0.2.0",
+    "agent": "TurboWarp Plus minimal samples"
+  }
+}
