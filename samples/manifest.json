@@ -9,7 +9,7 @@
     {
       "name": "speak-one-sentence",
       "title": "Web Speech minimal demo",
-      "instructions": "Click the blue button to speak Hello, TurboWarp! once."
+      "instructions": "Choose an available Japanese voice in Stage code, apply with green flag, then click Speak. Unselected voices stay silent."
     }
   ]
 }
