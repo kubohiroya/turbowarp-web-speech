@@ -47,7 +47,7 @@ See [samples/README.md](samples/README.md) for editable sources and regeneration
 ### npm package
 
 ```bash
-pnpm add --save-exact @kubohiroya/turbowarp-web-speech@0.4.0
+pnpm add --save-exact @kubohiroya/turbowarp-web-speech@0.4.1
 ```
 
 Standalone bundle:

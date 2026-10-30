@@ -1,6 +1,6 @@
 {
   "name": "@kubohiroya/turbowarp-web-speech",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Browser speech recognition and speech synthesis (Web Speech API) for TurboWarp, with a Composition API.",
   "author": {
     "name": "Hiroya Kubo",
