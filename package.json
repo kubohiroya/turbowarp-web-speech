@@ -1,6 +1,6 @@
 {
   "name": "@kubohiroya/turbowarp-web-speech",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Browser speech recognition and speech synthesis (Web Speech API) for TurboWarp, with a Composition API.",
   "author": {
     "name": "Hiroya Kubo",
@@ -88,5 +88,55 @@
     "revision": "d576d09a4388fdafce6a0a639f634bd6d0ddf1a5",
     "revisionRole": "base-commit",
     "sourceState": "working-tree-release-overlay"
+  },
+  "turbowarpExtension": {
+    "resourceDeclaration": {
+      "schemaVersion": 1,
+      "resources": [
+        {
+          "type": "microphone",
+          "usage": "conditional",
+          "purpose": {
+            "en": "Capture audio for browser speech recognition",
+            "ja": "ブラウザの音声認識用に音声を取得する"
+          },
+          "condition": {
+            "en": "When speech recognition is started",
+            "ja": "音声認識を開始する場合"
+          }
+        },
+        {
+          "type": "network",
+          "usage": "conditional",
+          "purpose": {
+            "en": "Use the browser speech recognition service",
+            "ja": "ブラウザの音声認識サービスを利用する"
+          },
+          "condition": {
+            "en": "When the browser uses server-based recognition; this depends on the browser and service",
+            "ja": "ブラウザがサーバーで音声認識する場合。ブラウザとサービスに依存する"
+          },
+          "data": {
+            "direction": "bidirectional",
+            "content": {
+              "en": "Microphone audio sent to the browser recognition provider and recognized text returned",
+              "ja": "ブラウザの認識サービス提供元へ送るマイク音声と、返される認識テキスト"
+            }
+          }
+        },
+        {
+          "type": "audio-output",
+          "usage": "conditional",
+          "purpose": {
+            "en": "Read text aloud with browser speech synthesis",
+            "ja": "ブラウザの音声合成でテキストを読み上げる"
+          },
+          "condition": {
+            "en": "When speech synthesis is requested",
+            "ja": "読み上げを実行する場合"
+          }
+        }
+      ]
+    }
   }
 }
